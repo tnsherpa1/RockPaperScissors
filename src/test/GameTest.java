@@ -9,11 +9,6 @@ import com.tashi.Game;
 public class GameTest {
 
     @Test
-    public void testIfGameIsString(){
-        Game testGame = new Game();
-    }
-
-    @Test
     public void testIfNumIsRandom(){
         int randomNum = Player.randomChoice();
         assertTrue(randomNum>0 && randomNum < 4);

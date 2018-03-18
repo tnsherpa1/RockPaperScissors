@@ -4,11 +4,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    public Game(){
+    private static Game gameInstance;
+
+    private Game(){
 
     }
+
+    public static Game getGameInstance(){
+        if (gameInstance == null){
+            gameInstance = new Game();
+        }
+        return gameInstance;
+    }
+
     public void init(){
-        Player.randomChoice();
         String choice;
         String move;
         ArrayList<String> moveList = new ArrayList<String>();
@@ -18,12 +27,12 @@ public class Game {
         Scanner pqScanner = new Scanner(System.in);
         do {
             Menu.displayMainMenu();
-            choice = pqScanner.next();
+            choice = pqScanner.next().toLowerCase();
             } while(!choice.equals("play"));
 
         do {
             Menu.displayGameMenu();
-            move = pqScanner.next();
+            move = pqScanner.next().toLowerCase();
         } while(!moveList.contains(move));
 
         Player playerOne = new Player(move);
