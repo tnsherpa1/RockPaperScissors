@@ -10,6 +10,13 @@ public class Menu {
         System.out.println("Type 'history' to view your game history");
         System.out.println("Type 'quit' to stop playing");
     }
+
+    public static void displayPlayerTypeMenu(){
+        System.out.println("Type 'player' for player two");
+        System.out.println("Type 'computer' to play with computer");
+        System.out.println("Type 'quit' to go back to main menu");
+    }
+
     public static void displayGameMenu(){
         System.out.println("Type in 'rock' 'paper' or 'scissors' to play.");
         System.out.println("  Type 'quit' to go back to the Main Menu  ");

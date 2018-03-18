@@ -18,30 +18,58 @@ public class Game {
     }
 
     public void init(){
+        String playerType;
+        String moveOne;
+        String moveTwo;
         String choice;
-        String move;
+        ArrayList<String> pqList = new ArrayList<String>();
+            pqList.add("play");
+        ArrayList<String> playerTypeList = new ArrayList<String>();
+            playerTypeList.add("player");
+            playerTypeList.add("computer");
         ArrayList<String> moveList = new ArrayList<String>();
             moveList.add("rock");
             moveList.add("paper");
             moveList.add("scissors");
         Scanner pqScanner = new Scanner(System.in);
+
         do {
             Menu.displayMainMenu();
             choice = pqScanner.next().toLowerCase();
-            } while(!choice.equals("play"));
+        } while(!pqList.contains(choice));
 
         do {
-            Menu.displayGameMenu();
-            move = pqScanner.next().toLowerCase();
-        } while(!moveList.contains(move));
+            Menu.displayPlayerTypeMenu();
+            playerType = pqScanner.next().toLowerCase();
+        } while(!playerTypeList.contains(playerType));
 
-        Player playerOne = new Player(move);
-        Player playerTwo = new Player(Player.randomMove());
+        Player playerOne = new Player();
+        Player playerTwo = new Player();
+        if (playerType.equals("computer")){
+                Menu.displayGameMenu();
+                moveOne = pqScanner.next().toLowerCase();
+                moveTwo = Player.randomMove();
+                playerOne.setName("Player One");
+                playerTwo.setName("Computer");
+                playerOne.setMove(moveOne);
+                playerTwo.setMove(moveTwo);
+            } else if(playerType.equals("player")) {
+                Menu.displayGameMenu();
+                System.out.println("Player one: ");
+                moveOne = pqScanner.next().toLowerCase();
+                System.out.println("Player two: ");
+                moveTwo = pqScanner.next().toLowerCase();
+                playerOne.setName("Player One");
+                playerTwo.setName("Player Two");
+                playerOne.setMove(moveOne);
+                playerTwo.setMove(moveTwo);
+            }
 
-        System.out.println("======================");
-        System.out.println("User chose: " + playerOne.getChoice());
-        System.out.println("Computer chose: " + playerTwo.getChoice());
-        System.out.println("======================");
-        Player.winLose(playerOne, playerTwo);
+            System.out.println("======================");
+            System.out.println(playerOne.getName() + ": " + playerOne.getMove());
+            System.out.println(playerTwo.getName() + ": " + playerTwo.getMove());
+            System.out.println("======================");
+            Player.winLose(playerOne, playerTwo);
+
     }
 }

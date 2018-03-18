@@ -9,6 +9,11 @@ import com.tashi.Game;
 public class GameTest {
 
     @Test
+    public void testIfGameIsNull(){
+        assertFalse(Game.getGameInstance().equals(null));
+    }
+
+    @Test
     public void testIfNumIsRandom(){
         int randomNum = Player.randomChoice();
         assertTrue(randomNum>0 && randomNum < 4);

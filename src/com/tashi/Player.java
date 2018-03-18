@@ -1,7 +1,8 @@
 package com.tashi;
 
 public class Player {
-    private String choice;
+    private String move;
+    private String name;
 
     public static int randomChoice(){
         int num = 1 + (int)(Math.random() * ((3-1) + 1));
@@ -19,29 +20,33 @@ public class Player {
     }
 
     public static void winLose(Player p1, Player p2){
-        if (p1.getChoice().equals("rock") && p2.getChoice().equals("paper")) {
-            System.out.println("Sorry, you lost!");
-        } else if(p1.getChoice().equals("paper") && p2.getChoice().equals("scissors")){
-            System.out.println("Sorry, you lost!");
-        } else if(p1.getChoice().equals("scissors") && p2.getChoice().equals("rock")){
-            System.out.println("Sorry, you lost!");
-        } else if(p1.getChoice().equals(p2.getChoice())){
+        if (p1.getMove().equals("rock") && p2.getMove().equals("paper")) {
+            System.out.println(p2.getName() + " won!");
+        } else if(p1.getMove().equals("paper") && p2.getMove().equals("scissors")){
+            System.out.println(p2.getName() + " won!");
+        } else if(p1.getMove().equals("scissors") && p2.getMove().equals("rock")){
+            System.out.println(p2.getName() + " won!");
+        } else if(p1.getMove().equals(p2.getMove())){
             System.out.println("It's a tie!");
         }
         else {
-            System.out.println("Congratulations, you won!");
+            System.out.println("Congratulations, " + p1.getName() + " won!");
         }
     }
 
-    public Player(String choice) {
-        this.choice = choice;
+    public String getMove() {
+        return move;
     }
 
-    public String getChoice() {
-        return choice;
+    public String getName() {
+        return name;
     }
 
-    public void setChoice(String choice) {
-        this.choice = choice;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMove(String move) {
+        this.move = move;
     }
 }
