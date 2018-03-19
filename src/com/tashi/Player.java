@@ -4,9 +4,8 @@ public class Player {
     private String move;
     private String name;
 
-    public static int randomChoice(){
-        int num = 1 + (int)(Math.random() * ((3-1) + 1));
-        return num;
+    public static int randomChoice() {
+        return 1 + (int)(Math.random() * ((3-1) + 1));
     }
 
     public static String randomMove(){
@@ -30,7 +29,7 @@ public class Player {
             System.out.println("It's a tie!");
         }
         else {
-            System.out.println("Congratulations, " + p1.getName() + " won!");
+            System.out.println(p1.getName() + " won!");
         }
     }
 
